@@ -22,12 +22,12 @@ node {
         stage("Run Gatling") {
         
                 sh 'mvn clean gatling:test -DTrainingTaskUsers=100'
-        
-            publishers {
-        archiveGatling()
-    }
+        }
 
+         stage("Archive Load Test Results") {
         
+                    gatlingArchive()
+
         }
 
 }
