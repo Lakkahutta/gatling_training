@@ -1,53 +1,42 @@
 String gitCredentials = 'gitId'
 String repoUrl = 'https://github.com/Lakkahutta/lighthouse_training.git'
+node {
 
-pipeline {
+stage("Build Maven") {
 
-    agent any
+        sh 'mvn -B clean package'
 
-    stages {
+}
 
-        stage("Build Maven") {
+stage('pullLatestCode'){
 
-            steps {
+         git branch: 'main',
 
-                sh 'mvn -B clean package'
+         credentialsId: gitCredentials,
 
-            }
+         url: repoUrl
 
-        }
+}
 
- stage('pullLatestCode'){
+stage("Run Gatling") {
 
-                 git branch: 'main',
+    steps {
 
-                 credentialsId: gitCredentials,
+        sh 'mvn clean gatling:test -DTrainingTaskUsers=100'
 
-                 url: repoUrl
+    }
 
-        }
+    post {
 
-        stage("Run Gatling") {
+        always {
 
-            steps {
-
-                sh 'mvn clean gatling:test -DTrainingTaskUsers=100'
-
-            }
-
-            post {
-
-                always {
-
-                    gatlingArchive()
-
-                }
-
-            }
+            gatlingArchive()
 
         }
 
     }
+
+}
 
 }
 
