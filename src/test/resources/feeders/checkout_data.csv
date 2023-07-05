@@ -1,0 +1,6 @@
+﻿name,address,postalCode,city,country,state,phone,email
+name1,address1,00001,city1,CA,CA_ON,00000001,test1@test.com
+name2,address2,00002,city2,CA,CA_AB,00000002,test2@test.com
+name3,address3,00003,city3,CA,CA_BC,00000003,test3@test.com
+name4,address4,00004,city4,CA,CA_MB,00000004,test4@test.com
+name5,address5,00005,city5,CA,CA_NB,00000005,test5@test.com
