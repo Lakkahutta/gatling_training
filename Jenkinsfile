@@ -21,21 +21,12 @@ node {
         
         stage("Run Gatling") {
         
-            steps {
-        
                 sh 'mvn clean gatling:test -DTrainingTaskUsers=100'
         
-            }
-        
-            post {
-        
-                always {
-        
-                    gatlingArchive()
-        
-                }
-        
-            }
+            publishers {
+        archiveGatling()
+    }
+
         
         }
 
