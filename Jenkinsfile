@@ -1,5 +1,5 @@
 String gitCredentials = 'gitId'
-String repoUrl = 'https://github.com/Lakkahutta/lighthouse_training.git'
+String repoUrl = 'https://github.com/Lakkahutta/gatling_training.git'
 node {
 
         stage('pulLatestCode'){
